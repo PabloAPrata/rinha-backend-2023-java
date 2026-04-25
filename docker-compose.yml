@@ -27,7 +27,7 @@ services:
       resources:
         limits:
           cpus: '0.35'
-          memory: '512MB'
+          memory: '666MB'
     network_mode: "host"
 
   app2:
@@ -81,7 +81,7 @@ services:
       resources:
         limits:
           cpus: '0.9'
-          memory: '1536MB'
+          memory: '1228MB'
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
