@@ -24,4 +24,6 @@ COPY --from=build /app/target/app.jar app.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75.0", "-XX:+UseG1GC", "-XX:+ExitOnOutOfMemoryError", "-jar", "app.jar"]
+
+#"-verbose:gc"
+ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75.0", "-XX:+UseG1GC", "-XX:+AlwaysPreTouch", "-XX:ActiveProcessorCount=2", "-Djava.lang.Integer.IntegerCache.high=10000", "-XX:+UseNUMA", "-XX:+ExitOnOutOfMemoryError", "-jar", "app.jar"]
