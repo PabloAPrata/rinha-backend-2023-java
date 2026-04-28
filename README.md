@@ -4,7 +4,7 @@ Desafio original: https://github.com/zanfranceschi/rinha-de-backend-2023-q3?s=08
 
 **Projeto backend feito com Spring-boot 4.0.5 e Java 25 seguindo as regras: https://github.com/zanfranceschi/rinha-de-backend-2023-q3/blob/main/INSTRUCOES.md
 
-### Resutado do teste
+### Resutado do teste (46565 INSERTS)
 ![Java 25 is the king](./results.png)
 ---
 
