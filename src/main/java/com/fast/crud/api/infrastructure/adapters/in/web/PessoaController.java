@@ -1,6 +1,5 @@
 package com.fast.crud.api.infrastructure.adapters.in.web;
 
-
 import com.fast.crud.api.core.ports.in.BuscarPessoasUseCase;
 import com.fast.crud.api.core.ports.in.CreatePessoaUseCase;
 import com.fast.crud.api.core.ports.in.DetalharPessoaUseCase;
@@ -17,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,11 +32,10 @@ public class PessoaController {
     private final PessoaWebMapper mapper;
 
     @PostMapping
-    public ResponseEntity<Void> cadastrarPessoa(@RequestBody @Valid PessoaRequest request,
-                                                   UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Void> cadastrarPessoa(@RequestBody @Valid PessoaRequest request) {
         var response = createPessoaUseCase.createPessoa(mapper.toDomain(request));
 
-        var uri = uriBuilder.path("/pessoas/{id}").buildAndExpand(response.id()).toUri();
+        URI uri = URI.create("/pessoas/" + response.id());
 
         return ResponseEntity.created(uri).build();
     }

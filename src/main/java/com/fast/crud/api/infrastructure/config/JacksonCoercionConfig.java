@@ -13,14 +13,12 @@ public class JacksonCoercionConfig {
     @Bean
     public JsonMapperBuilderCustomizer jsonCustomizer() {
         return builder -> {
-            // Regra: Se o destino for TEXTO (String) e a entrada for NÚMERO (Integer), FALHE.
             builder.withCoercionConfig(LogicalType.Textual, config ->
                     config.setCoercion(CoercionInputShape.Integer, CoercionAction.Fail)
                             .setCoercion(CoercionInputShape.Float, CoercionAction.Fail)
                             .setCoercion(CoercionInputShape.Boolean, CoercionAction.Fail)
             );
 
-            // Regra: Se o destino for uma COLEÇÃO (List<String>) e houver números nela, FALHE.
             builder.withCoercionConfig(LogicalType.Collection, config ->
                     config.setCoercion(CoercionInputShape.Integer, CoercionAction.Fail)
                             .setCoercion(CoercionInputShape.Float, CoercionAction.Fail)
